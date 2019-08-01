@@ -1,6 +1,3 @@
-if (process.env.DB_ENV === 'testing') {
-}
-
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('conservationists', tbl => {
     tbl.increments('cons_id');
@@ -10,7 +7,7 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .references('id')
       .inTable('users')
-      .onDelete('RESTRICT')
+      .onDelete('CASCADE')
       .onUpdate('CASCADE');
     tbl.string('org_name', 50);
     tbl.string('org_link_url', 500);

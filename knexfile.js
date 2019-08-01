@@ -7,8 +7,15 @@ const pg = require('pg');
 const localPgConnection = {
   host: 'localhost',
   user: 'postgres',
-  password: 'postgrespass',
-  database: 'ourFunDB'
+  password: '7522',
+  database: 'testUsers'
+};
+
+const testingPgConnection = {
+  host: 'localhost',
+  user: 'postgres',
+  password: '7522',
+  database: 'testUsers'
 };
 
 // Production database connection
@@ -38,10 +45,10 @@ module.exports = {
 
   testing: {
     client: 'pg',
-    connection: dbConnection,
+    connection: testingPgConnection,
     useNullAsDefault: true,
     migrations: {
-      directory: './database/migrations',
+      directory: './database/test_migrations',
       tablename: 'knex_migrations'
     },
     seeds: {
